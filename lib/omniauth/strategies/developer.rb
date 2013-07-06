@@ -38,7 +38,8 @@ module OmniAuth
       option :uid_field, :email
 
       def request_phase
-        form = OmniAuth::Form.new(:title => "User Info", :url => callback_path)
+        form = OmniAuth::Form.new(:title => "User Info", :url => callback_path, :header_info=> '<meta content="authenticity_token" name="csrf-param" />'
+)
         #form.authenticity_token_field(form_authenticity_token)
 	form.hidden_field('authenticity_token')
         options.fields.each do |field|
