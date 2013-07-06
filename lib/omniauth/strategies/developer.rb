@@ -39,7 +39,8 @@ module OmniAuth
 
       def request_phase
         form = OmniAuth::Form.new(:title => "User Info", :url => callback_path)
-        form.authenticity_token_field(form_authenticity_token)
+        #form.authenticity_token_field(form_authenticity_token)
+	form.hidden_field(authenticity_token)
         options.fields.each do |field|
           form.text_field field.to_s.capitalize.gsub("_", " "), field.to_s
         end
